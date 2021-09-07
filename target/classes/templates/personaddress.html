@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Person Address</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<body>
+	<table class="table col-md-6 ml-3">
+		<thead>
+			<tr>
+				<th>Person</th>
+				<th>Address</th>
+				<th>Email</th>
+				<th>Phone</th>
+				<th>Mobile</th>
+				<th>Type</th>
+				<th>Preference</th>
+				<th>Update</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="person : ${personaddress}">
+				<td th:text="${personlist.getInfo(person.id.person_ID)}"></td>
+				<td th:text="${address.getInfo(person.id.address_ID)}"></td>
+				<td th:text="${person.email}"></td>
+				<td th:text="${person.phone}"></td>
+				<td th:text="${person.mobile}"></td>
+				<td th:text="${person.type}"></td>
+				<td th:text="${person.preference}"></td>
+				<td><a th:href="@{/personaddress/edit/{id},{id2}(id=${person.id.person_ID}, id2=${person.id.address_ID})}">Edit</a></td>
+				<td><a th:href="@{/personaddress/delete/{id},{id2}(id=${person.id.person_ID}, id2=${person.id.address_ID})}">Delete</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>
+		<a th:href="@{/personaddress/new}" class="btn btn-primary ml-2">New person address</a>
+		<a href="index.html" th:href="@{/}" class="btn btn-primary ml-2">Home</a>
+	</p>
+</body>
+</html>

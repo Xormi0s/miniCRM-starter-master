@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>CRM Homepage</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+
+<p>Please select an option</p>
+
+<ol>
+    <li><a href="persons.html" th:href="@{/persons}"> Persons List</a></li>
+    <li><a href="communities.html" th:href="@{/communities}"> Communities List</a></li>
+    <li><a href="addresses.html" th:href="@{/addresses}"> Addresses List</a></li>
+    <li><a href="personaddress.html" th:href="@{/personaddress}"> Person Address</a></li>
+    <li><a href="member.html" th:href="@{/member}"> Members</a></li>
+    <li><a href="event.html" th:href="@{/event}"> Events</a></li>
+</ol>
+
+<div>My CRM</div>
+
+
+</body>
+</html>

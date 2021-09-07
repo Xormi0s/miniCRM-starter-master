@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Update Person Address</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<body>
+	<div class="container ml-3 mt-4">
+
+		<h2>Update person address</h2>
+
+		<form action="#"
+			  th:action="@{/personaddress/update/{id},{id2}(id=${personaddress.id.person_ID}, id2=${personaddress.id.address_ID})}"
+			  th:object="${personaddress}"
+			  method="post"class="mt-4">
+			<div class="form-group row">
+				<label for="person col-form-label col-sm-2">Person</label>
+				<select th:field="*{id.person_ID}" id="person col-form-label col-sm-2"
+						class="form-control col-sm-6 ml-2">
+					<th:block th:each="personlist : ${person}">
+						<option th:text="${personlist.firstName} + ' ' + ${personlist.lastName}" th:value="${personlist.id}"/>
+					</th:block>
+				</select>
+			</div>
+			<div class="form-group row">
+				<label for="address col-form-label col-sm-2">Address</label>
+				<select th:field="*{id.address_ID}" id="address col-form-label col-sm-2"
+						class="form-control col-sm-6 ml-2">
+					<th:block th:each="addresslist : ${address}">
+						<option th:text="${addresslist.street} + ' ' + ${addresslist.number}" th:value="${addresslist.id}"/>
+					</th:block>
+				</select>
+			</div>
+			<div class="form-group row">
+				<label for="email col-form-label col-sm-2">Email</label>
+				<input type="text" th:field="*{email}" id="email col-form-label col-sm-2"
+					   class="form-control col-sm-6 ml-2" placeholder="Email" />
+			</div>
+			<div class="form-group row">
+				<label for="phone col-form-label col-sm-2">Phone</label>
+				<input type="text" th:field="*{phone}" id="phone col-form-label col-sm-2"
+					   class="form-control col-sm-6 ml-2" placeholder="Phone" />
+			</div>
+			<div class="form-group row">
+				<label for="mobile col-form-label col-sm-2">Mobile</label>
+				<input type="text" th:field="*{mobile}" id="mobile col-form-label col-sm-2"
+					   class="form-control col-sm-6 ml-2" placeholder="Mobile" />
+			</div>
+			<div class="form-group row">
+				<label for="type col-form-label col-sm-2">Type</label>
+				<input type="text" th:field="*{type}" id="type col-form-label col-sm-2"
+					   class="form-control col-sm-6 ml-2" placeholder="Preference"/>
+			</div>
+			<div class="form-group row">
+				<label for="preference col-form-label col-sm-2">Preference</label>
+				<input type="text" th:field="*{preference}" id="preference col-form-label col-sm-2"
+					   class="form-control col-sm-6 ml-2" placeholder="Preference communication" />
+			</div>
+			<input type="submit" value="Update Person Address" class="btn btn-primary ml-2" />
+			<a href="index.html" th:href="@{/personaddress}" class="btn btn-primary ml-2">Back</a>
+		</form>
+	</div>
+</body>
+</html>

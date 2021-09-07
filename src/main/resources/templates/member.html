@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Members</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<body>
+	<table class="table col-md-6 ml-3">
+		<thead>
+			<tr>
+				<th>Person</th>
+				<th>Community</th>
+				<th>Since</th>
+				<th>Until</th>
+				<th>Update</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="member : ${members}">
+				<td th:text="${person.getInfo(member.id.getPerson_ID())}"></td>
+				<td th:text="${community.getInfo(member.id.getCommunity_ID())}"></td>
+				<td th:text="${member.since}"></td>
+				<td th:text="${member.until}"></td>
+				<td><a th:href="@{/member/edit/{id},{id2}(id=${member.id.person_ID}, id2=${member.id.community_ID})}">Edit</a></td>
+				<td><a th:href="@{/member/delete/{id},{id2}(id=${member.id.person_ID}, id2=${member.id.community_ID})}">Delete</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>
+		<a th:href="@{/member/new}" class="btn btn-primary ml-2">New Member</a>
+		<a href="index.html" th:href="@{/}" class="btn btn-primary ml-2">Home</a>
+	</p>
+</body>
+</html>

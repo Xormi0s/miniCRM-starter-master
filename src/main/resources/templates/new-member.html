@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Add person Address</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<body>
+	<div class="container ml-3 mt-4">
+
+		<h2>New person address</h2>
+
+		<form th:action="@{/member}" th:object="${members}" method="post"
+			class="mt-4">
+			<div class="form-group row">
+				<label for="person col-form-label col-sm-2">Person</label>
+				<select th:field="*{id.person_ID}" id="person col-form-label col-sm-2"
+					   class="form-control col-sm-6 ml-2">
+					<th:block th:each="personlist : ${person}">
+						<option th:text="${personlist.firstName} + ' ' + ${personlist.lastName}" th:value="${personlist.id}" />
+					</th:block>
+				</select>
+			</div>
+			<div class="form-group row">
+				<label for="community col-form-label col-sm-2">Community</label>
+				<select th:field="*{id.community_ID}" id="community col-form-label col-sm-2"
+						class="form-control col-sm-6 ml-2">
+					<th:block th:each="community : ${communities}">
+						<option th:text="${community.description}" th:value="${community.ID}" />
+					</th:block>
+				</select>
+			</div>
+			<div class="form-group row">
+				<label for="since col-form-label col-sm-2">Since</label>
+				<input type="date" th:field="*{since}" id="since col-form-label col-sm-2"
+					   class="form-control col-sm-6 ml-2" placeholder="Since when member" />
+			</div>
+			<div class="form-group row">
+				<label for="until col-form-label col-sm-2">Until</label>
+				<input type="date" th:field="*{until}" value="9999-12-31" id="until col-form-label col-sm-2"
+					   class="form-control col-sm-6 ml-2" placeholder="Member until when -optional-" />
+			</div>
+				<input type="submit" value="Save member"
+					class="btn btn-primary ml-2" />
+			<a href="index.html" th:href="@{/member}" class="btn btn-primary ml-2">Back</a>
+		</form>
+	</div>
+</body>
+</html>

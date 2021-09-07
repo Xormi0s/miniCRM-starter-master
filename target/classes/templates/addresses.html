@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>Addresses</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<body>
+	<table class="table col-md-6 ml-3">
+		<thead>
+			<tr>
+				<th class="d-none">ID</th>
+				<th>Street</th>
+				<th>Number</th>
+				<th>Box</th>
+				<th>Zip</th>
+				<th>City</th>
+				<th>Country</th>
+				<th>Type</th>
+				<th>Update</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="Address : ${addresses}">
+				<td th:text="${Address.id}" class="d-none"></td>
+				<td th:text="${Address.street}"></td>
+				<td th:text="${Address.number}"></td>
+				<td th:text="${Address.box}"></td>
+				<td th:text="${Address.zip}"></td>
+				<td th:text="${Address.city}"></td>
+				<td th:text="${Address.country}"></td>
+				<td th:text="${Address.type}"></td>
+				<td><a th:href="@{/addresses/edit/{id}(id=${Address.id})}">Edit</a></td>
+				<td><a th:href="@{/addresses/delete/{id}(id=${Address.id})}">Delete</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>
+		<a th:href="@{/addresses/new}" class="btn btn-primary ml-2">New Address</a>
+		<a href="index.html" th:href="@{/}" class="btn btn-primary ml-2">Home</a>
+	</p>
+</body>
+</html>

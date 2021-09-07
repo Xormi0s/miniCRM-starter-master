@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<title>persons</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<body>
+	<table class="table col-md-6 ml-3">
+		<thead>
+			<tr>
+				<th class="d-none">Id</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>BirthDate</th>
+				<th>Update</th>
+				<th>Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="person : ${persons}">
+				<td th:text="${person.id}" class="d-none"></td>
+				<td th:text="${person.firstName}"></td>
+				<td th:text="${person.lastName}"></td>
+				<td th:text="${person.birthDay}"></td>
+				<td><a th:href="@{/persons/edit/{id}(id=${person.id})}">Edit</a></td>
+				<td><a th:href="@{/persons/delete/{id}(id=${person.id})}">Delete</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>
+		<a th:href="@{/persons/new}" class="btn btn-primary ml-2">New person</a>
+		<a href="index.html" th:href="@{/}" class="btn btn-primary ml-2">Home</a>
+	</p>
+</body>
+</html>

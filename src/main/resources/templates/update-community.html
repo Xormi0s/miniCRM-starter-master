@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Update community</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+</head>
+<body>
+	<div class="container ml-3 mt-4">
+
+		<h2>Update community</h2>
+
+		<form action="#"
+			  th:action="@{/communities/update/{id}(id=${communities.ID})}"
+			  th:object="${communities}"
+			  method="post"class="mt-4">
+			<div class="form-group row" style="display: none;">
+				<label for="id col-form-label col-sm-2">ID</label>
+				<input type="text" th:field="*{ID}" id="id col-form-label col-sm-2"
+					   class="form-control col-sm-6 ml-2" placeholder="ID" />
+			</div>
+			<div class="form-group row">
+				<label for="description col-form-label col-sm-2">Description</label>
+				<input type="text" th:field="*{description}" id="description col-form-label col-sm-2"
+					   class="form-control col-sm-6 ml-2" placeholder="description" />
+			</div>
+			<input type="submit" value="Update Community" class="btn btn-primary ml-2" />
+			<a href="index.html" th:href="@{/communities}" class="btn btn-primary ml-2">Back</a>
+		</form>
+	</div>
+</body>
+</html>
